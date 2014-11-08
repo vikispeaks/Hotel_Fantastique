@@ -13,6 +13,12 @@
 			<address class="hotel_address">72b Rue de Awesome, 75001, Paris, France</address>
 		</header>
 		
+		<div id="lightbox">
+		    <div id="content">
+		        <img src=""/>
+		    </div>
+		</div>
+
 		<section class="photos">
 			<ul>
 				<li class="one_photo"><a href="img/1_large.jpg"><img src="img/1_thumb.jpg" alt="description of photo 1" /></a></li>
@@ -32,10 +38,6 @@
 			</ul>
 		</section>
 
-		<div id="map-canvas" style="height:200px; width:400px;">
-		</div> -->
-		<!-- <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Hotel%20Fantastique&key=AIzaSyB2G1nqennkDoUoieNFA9jNMh6PEUV6bfM"></iframe>
- -->
 		<section class="description">
 			<h2>Description</h2>
 			<p>Located in the heart of Paris, this 5-star hotel offers elegant guest rooms in a Hausmannian-style building. It features a fitness centre, a concierge and a tour desk with ticket service.</p>
@@ -61,6 +63,8 @@
 			</ul>
 		</section>
 		
+		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d10499.212474398682!2d2.3359426500000033!3d48.86196460000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srestaurants+in+Rue+de+awesome+75001%2C+paris!5e0!3m2!1sen!2sin!4v1415468097765" width="960" height="400" frameborder="0" style="border:0"></iframe>
+
 		<section class="rooms">
 			<h2>Select Your Room</h2>
 			<form method="post" action="" class="rooms_table_form">
@@ -482,21 +486,6 @@
 		</section>
 		
 		<script src="jquery-1.11.1.min.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBxYxGH40ToV3hoiA_By8Zxv7aUuZ0EEzA"></script>
-		<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?client=325887681630.apps.googleusercontent.com&v=3.17">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: -34.397, lng: 150.644},
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
 		<script src="js.js"></script>
 	</body>
 </html>

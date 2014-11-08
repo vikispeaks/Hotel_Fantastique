@@ -2,27 +2,28 @@
 
 $(document).ready(function(){  
   	pagination(); 
+    
     $('th').click(function(){
 	    var table = $(this).parents('table').children('tbody');
       var rows = table.children('tr').toArray().sort(comparer($(this).index()));
 		  this.asc = !this.asc;
 	    if (!this.asc){rows = rows.reverse();}
 	    for (var i = 0; i < rows.length; i++){table.append(rows[i]);}
-	});
+    });
 
     $('.room_quantity select').change(function(){
-      var no_of_rooms = $(this).val();
-      var room_price = $(this).parent('td').prev('td').text().substring(1);
-      var total_price = (no_of_rooms*room_price).toFixed(2);
-      var total_cost = 0;
-      $(this).parent('td').next('td').text('\u20AC'+total_price);
-      $(this).parent('td').next('td').text('\u20AC'+total_price);
-      $("td.room_cost").each(function() {
-        var value = $(this).text().substring(1);
-        total_cost += parseFloat(value);
-      });
-      $('.room_total_cost').text('\u20AC'+total_cost.toFixed(2));
+      table_calc($(this));
     });
+
+    $('.one_photo').on('click', function(e) {
+        e.preventDefault();
+        photo_popup($(this));
+    });
+  
+    $('#lightbox').on('click', function() { 
+      $('#lightbox').hide();
+    });
+
 }); 
 
 function pagination(){
@@ -82,4 +83,36 @@ function comparer(index) {
 
 function getCellValue(row, index){ 
   return $(row).children('td').eq(index).html();
+}
+
+function photo_popup(thisEle){
+    var thisEle = thisEle;
+    var image_href = $(thisEle).children('a').attr("href");
+        if ($('#lightbox').length > 0) { 
+          $('#content').html('<span>Prev</span><img src="' + image_href + '" /><span>Next</span>');
+          $('#lightbox').show();
+        }
+        else {       
+          var lightbox = 
+          '<div id="lightbox">' +
+            '<div id="content">' + '<span>Prev</span>' +
+              '<img src="' + image_href +'" />' + '<span>Next</span>' +
+            '</div>' +  
+          '</div>';            
+          $('body').append(lightbox);
+        }  
+}
+
+function table_calc(thisElem){
+    var thisElem = thisElem;
+    var no_of_rooms = $(thisElem).val();
+    var room_price = $(thisElem).parent('td').prev('td').text().substring(1);
+    var total_price = (no_of_rooms*room_price).toFixed(2);
+    var total_cost = 0;
+    $(thisElem).parent('td').next('td').text('\u20AC'+total_price);
+    $("td.room_cost").each(function() {
+      var value = $(this).text().substring(1);
+      total_cost += parseFloat(value);
+    });
+    $('.room_total_cost').text('\u20AC'+total_cost.toFixed(2));
 }
