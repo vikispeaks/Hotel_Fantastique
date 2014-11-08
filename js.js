@@ -2,8 +2,7 @@
 
 $(document).ready(function(){  
   	pagination(); 
-    //initialize();
-  	$('th').click(function(){
+    $('th').click(function(){
 	    var table = $(this).parents('table').children('tbody');
       var rows = table.children('tr').toArray().sort(comparer($(this).index()));
 		  this.asc = !this.asc;
